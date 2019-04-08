@@ -3,5 +3,13 @@ def reformat_languages(languages)
   new_hash = Hash.new
   languages.collect do |type, group|
     group.collect do |name, description|
-      new-hash[name] = 
+      description.collect do |key, value|
+        if new_hash.keys.include?(name)
+          new_hash[name][:style] << type
+        else
+        new_hash[name] = {key => value, :style => [type]}
+        end
+      end
+    end
+  end
 end
